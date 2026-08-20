@@ -5,13 +5,14 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  nitro: { preset: "vercel" },
   // nitro: { preset: "vercel" },
   vite: {
-    plugins: [
-      nitro({
-        preset: "vercel",
-      }),
-    ],
+    // plugins: [
+    //   nitro({
+    //     preset: "vercel",
+    //   }),
+    // ],
     assetsInclude: ["**/*.geojson"],
   },
 });
