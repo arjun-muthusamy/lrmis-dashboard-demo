@@ -23,6 +23,7 @@ import { Route as AppOutcomesRouteImport } from './routes/_app.outcomes'
 import { Route as AppOverviewRouteImport } from './routes/_app.overview'
 import { Route as AppReferralsRouteImport } from './routes/_app.referrals'
 import { Route as AppReportsRouteImport } from './routes/_app.reports'
+import { Route as AppDistrictDistrictIdRouteImport } from './routes/_app.district.$districtId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -93,6 +94,11 @@ const AppReportsRoute = AppReportsRouteImport.update({
   path: '/reports',
   getParentRoute: () => AppRoute,
 } as any)
+const AppDistrictDistrictIdRoute = AppDistrictDistrictIdRouteImport.update({
+  id: '/district/$districtId',
+  path: '/district/$districtId',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/overview': typeof AppOverviewRoute
   '/referrals': typeof AppReferralsRoute
   '/reports': typeof AppReportsRoute
+  '/district/$districtId': typeof AppDistrictDistrictIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/overview': typeof AppOverviewRoute
   '/referrals': typeof AppReferralsRoute
   '/reports': typeof AppReportsRoute
+  '/district/$districtId': typeof AppDistrictDistrictIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -140,6 +148,7 @@ export interface FileRoutesById {
   '/_app/overview': typeof AppOverviewRoute
   '/_app/referrals': typeof AppReferralsRoute
   '/_app/reports': typeof AppReportsRoute
+  '/_app/district/$districtId': typeof AppDistrictDistrictIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -157,6 +166,7 @@ export interface FileRouteTypes {
     | '/overview'
     | '/referrals'
     | '/reports'
+    | '/district/$districtId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/overview'
     | '/referrals'
     | '/reports'
+    | '/district/$districtId'
   id:
     | '__root__'
     | '/'
@@ -188,6 +199,7 @@ export interface FileRouteTypes {
     | '/_app/overview'
     | '/_app/referrals'
     | '/_app/reports'
+    | '/_app/district/$districtId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -296,6 +308,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppReportsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/district/$districtId': {
+      id: '/_app/district/$districtId'
+      path: '/district/$districtId'
+      fullPath: '/district/$districtId'
+      preLoaderRoute: typeof AppDistrictDistrictIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
@@ -311,6 +330,7 @@ interface AppRouteChildren {
   AppOverviewRoute: typeof AppOverviewRoute
   AppReferralsRoute: typeof AppReferralsRoute
   AppReportsRoute: typeof AppReportsRoute
+  AppDistrictDistrictIdRoute: typeof AppDistrictDistrictIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -325,6 +345,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppOverviewRoute: AppOverviewRoute,
   AppReferralsRoute: AppReferralsRoute,
   AppReportsRoute: AppReportsRoute,
+  AppDistrictDistrictIdRoute: AppDistrictDistrictIdRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)

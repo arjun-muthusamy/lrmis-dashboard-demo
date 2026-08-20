@@ -47,10 +47,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 // import { OverviewStatsStrip } from "@/components/OverviewStatsStrip";
-import { OverviewStatsStripMinimal, OverviewStatsStripDark } from "@/components/OverviewStatsStrip";
 import { OverviewStatsStripLight } from "@/components/OverviewStatsStripLight";
-import { OverviewStatsStripMain } from "@/components/OverviewStatsStripMain";
-import { DistrictTable } from "@/components/DistrictTable";
+import { DistrictTable } from "@/modules/overview/DistrictTable";
 
 export const Route = createFileRoute("/_app/overview")({
   head: () => ({ meta: [{ title: "Overview and Facility Performance — LRMIS" }] }),
@@ -509,12 +507,7 @@ function OverviewPage() {
         </ChartCard>
       </div>
 
-      <DistrictTable
-        onViewDetail={(district) => {
-          setSelected(district);
-          setSelectedFacility(undefined);
-        }}
-      />
+      <DistrictTable />
 
       <FacilityListPanel
         open={!!gapPanel}
