@@ -1,18 +1,17 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-import { nitro } from "nitro/vite";
 
 export default defineConfig({
   tanstackStart: {
-    server: { entry: "server" },
+    server: {
+      entry: "server",
+    },
   },
-  nitro: { preset: "vercel" },
-  // nitro: { preset: "vercel" },
+
+  nitro: {
+    preset: "vercel",
+  },
+
   vite: {
-    // plugins: [
-    //   nitro({
-    //     preset: "vercel",
-    //   }),
-    // ],
     assetsInclude: ["**/*.geojson"],
   },
 });
